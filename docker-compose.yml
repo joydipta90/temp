@@ -1,0 +1,10 @@
+services:
+  app:
+    build: .
+    container_name: combined_container
+    ports:
+      - "${PORT}:80"
+    volumes:
+      - ./feepran:/var/www/html
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    

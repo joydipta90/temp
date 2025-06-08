@@ -1,11 +1,11 @@
 #!/bin/bash
-# Start PHP-FPM in the background
+
 php-fpm &
 
-# Wait for PHP-FPM to be ready
-until curl --silent --head --fail http://127.0.0.1:9000 > /dev/null; do
+# Wait for php-fpm port 9000 to be open
+until nc -z 127.0.0.1 9000; do
     sleep 0.1
 done
 
-# Start Nginx in the foreground
+echo "Starting Nginx..."
 exec nginx -g 'daemon off;'

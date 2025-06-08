@@ -2,7 +2,7 @@ FROM php:8.3-fpm
 
 # Install Nginx
 RUN apt-get update && \
-    apt-get install -y nginx && \
+    apt-get install -y nginx netcat && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 

@@ -2,7 +2,7 @@ FROM php:8.3-fpm
 
 # Install Nginx
 RUN apt-get update && \
-    apt-get install -y nginx netcat && \
+    apt-get install -y nginx netcat-openbsd && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -29,4 +29,4 @@ RUN chmod +x /usr/local/bin/start.sh
 
 EXPOSE 80
 
-CMD ["start.sh"]
+CMD ["/bin/bash", "/usr/local/bin/start.sh"]

@@ -1,11 +1,11 @@
 #!/bin/bash
+set -ex  # show each command + stop on error
 
+echo "Starting PHP-FPM..."
 php-fpm &
 
-# Wait for php-fpm port 9000 to be open
-until nc -z 127.0.0.1 9000; do
-    sleep 0.1
-done
+# Optional wait - not strictly needed
+sleep 1
 
 echo "Starting Nginx..."
 exec nginx -g 'daemon off;'
